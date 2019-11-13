@@ -4,7 +4,7 @@ class Song < ActiveRecord::Base
   belongs_to :genre
   has_many :notes
 
- 
+  accepts_nested_attributes_for :notes, :reject_if => proc { |attrs| attrs[:content].blank? }
 
 
   def artist_name=(name)
